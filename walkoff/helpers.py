@@ -26,11 +26,11 @@ logger = logging.getLogger(__name__)
 
 def import_py_file(module_name, path_to_file):
     """Dynamically imports a python module.
-    
+
     Args:
         module_name (str): The name of the module to be imported.
         path_to_file (str): The path to the module to be imported.
-        
+
     Returns:
         The module object that was imported.
     """
@@ -42,8 +42,8 @@ def import_py_file(module_name, path_to_file):
             if w:
                 mod_name = module_name.replace('.main', '')
                 if not (type(w[-1].category) == type(exceptions.RuntimeWarning) or
-                                        'Parent module \'apps.' + mod_name + '\' not found while handling absolute import' in
-                                w[-1].message):
+                        'Parent module \'apps.' + mod_name + '\' not found while handling absolute import' in
+                        w[-1].message):
                     print(w[-1].message)
     else:
         from importlib import machinery
@@ -54,11 +54,11 @@ def import_py_file(module_name, path_to_file):
 
 def import_lib(directory, module_name):
     """Dynamically imports a Python library.
-    
+
     Args:
         directory (str): The directory in which the library is located.
         module_name (str): The name of the library to be imported.
-        
+
     Returns:
         The module object that was imported.
     """
@@ -76,10 +76,10 @@ def import_lib(directory, module_name):
 
 def construct_module_name_from_path(path):
     """Constructs the name of the module with the path name.
-    
+
     Args:
         path (str): The path to the module.
-        
+
     Returns:
          The name of the module with the path name.
     """
@@ -90,16 +90,16 @@ def construct_module_name_from_path(path):
 
 def import_app_main(app_name, path=None, reload=False):
     """Dynamically imports the main function of an App.
-    
+
     Args:
         app_name (str): The name of the App from which to import the main function.
-        path (str, optional): The path to the apps module. Defaults to core.config.paths.apps_path
+        path (str, optional): The path to the apps module. Defaults to core.config.paths.base_apps_path
         reload (bool, optional): Reload the module if already imported. Defaults to True
     Returns:
         The module object that was imported.
     """
     if path is None:
-        path = walkoff.config.paths.apps_path
+        path = walkoff.config.paths.installed_apps_path
     app_path = os.path.join(path, app_name, 'main.py')
     module_name = construct_module_name_from_path(app_path[:-3])
     try:
@@ -130,30 +130,30 @@ def __list_valid_directories(path):
 
 def list_apps(path=None):
     """Get a list of the apps.
-    
+
     Args:
         path (str, optional): The path to the apps folder. Default is None.
-        
+
     Returns:
-        A list of the apps given the apps path or the apps_path in the configuration.
+        A list of the apps given the installed_apps_path in the configuration.
     """
     if path is None:
-        path = walkoff.config.paths.apps_path
+        path = walkoff.config.paths.installed_apps_path
     return __list_valid_directories(path)
 
 
 def list_interfaces(path=None):
     if path is None:
-        path = walkoff.config.paths.interfaces_path
+        path = walkoff.config.paths.installed_interfaces_path
     return __list_valid_directories(path)
 
 
 def list_class_functions(class_name):
     """Get the functions for a python Class.
-    
+
     Args:
         class_name (str): The name of the python Class from which to get the functions.
-        
+
     Returns:
         The list of functions for a given python Class.
     """
@@ -163,10 +163,10 @@ def list_class_functions(class_name):
 
 def locate_playbooks_in_directory(path=None):
     """Get a list of workflows in a specified directory or the workflows_path directory as specified in the configuration.
-    
+
     Args:
         path (str, optional): The directory path from which to locate the workflows. Defaults to None.
-        
+
     Returns:
         A list of workflow names from the specified path, or the directory specified in the configuration.
     """
@@ -181,10 +181,10 @@ def locate_playbooks_in_directory(path=None):
 
 def get_workflow_names_from_file(filename):
     """Get a list of workflow names in a given file.
-    
+
     Args:
         filename (str): The filename from which to locate the workflows.
-        
+
     Returns:
         A list of workflow names from the specified file, if the file exists.
     """
@@ -198,11 +198,11 @@ def get_workflow_names_from_file(filename):
 
 def combine_dicts(x, y):
     """Combines two dictionaries into one.
-    
+
     Args:
         x (dict): One dictionary to be merged.
         y (dict): The other dictionary to be merged with x.
-        
+
     Returns:
         The merged dictionary.
     """
