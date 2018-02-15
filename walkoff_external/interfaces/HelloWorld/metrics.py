@@ -1,4 +1,4 @@
-from interfaces import dispatcher, AppBlueprint
+from walkoff.interfacebase import dispatcher, AppBlueprint
 from walkoff.events import WalkoffEvent
 from flask import Blueprint, jsonify, Response
 from flask_jwt_extended import jwt_required

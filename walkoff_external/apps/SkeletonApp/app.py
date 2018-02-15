@@ -1,5 +1,5 @@
 import logging
-from apps import App, action
+from walkoff.appbase import App, action
 
 
 logger = logging.getLogger(__name__)

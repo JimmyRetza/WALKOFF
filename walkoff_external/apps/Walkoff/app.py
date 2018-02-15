@@ -1,5 +1,5 @@
 import logging
-from apps import App, action
+from walkoff.appbase import App, action
 import requests
 from requests.exceptions import Timeout
 from walkoff.config.paths import certificate_path

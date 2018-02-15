@@ -2,9 +2,9 @@ import logging
 from copy import deepcopy
 from functools import partial
 
-from .util import validate_events, add_docstring
-from .dispatchers import AppEventDispatcher, EventDispatcher
-from .exceptions import UnknownEvent, InvalidEventHandler
+from walkoff.interfacebase.util import validate_events, add_docstring
+from walkoff.interfacebase.dispatchers import AppEventDispatcher, EventDispatcher
+from walkoff.interfacebase.exceptions import UnknownEvent, InvalidEventHandler
 from walkoff.events import WalkoffEvent, EventType
 from walkoff.helpers import get_function_arg_names
 

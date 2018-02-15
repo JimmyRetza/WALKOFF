@@ -1,5 +1,5 @@
-from apps import action
-from apps.messaging import Text, Message, send_message, Url, AcceptDecline
+from walkoff.appbase import action
+from walkoff.appbase.messaging import Text, Message, send_message, Url, AcceptDecline
 import time
 import json
 import csv

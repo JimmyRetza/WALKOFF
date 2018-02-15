@@ -1,7 +1,7 @@
 import time
 import random
 from flask import Blueprint, Response
-from interfaces import AppBlueprint
+from walkoff.interfacebase import AppBlueprint
 from threading import Thread
 from gevent.event import Event, AsyncResult
 from gevent import sleep

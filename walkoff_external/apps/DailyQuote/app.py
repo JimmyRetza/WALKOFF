@@ -1,4 +1,4 @@
-from apps import App, action
+from walkoff.appbase import App, action
 import requests
 import json
 
