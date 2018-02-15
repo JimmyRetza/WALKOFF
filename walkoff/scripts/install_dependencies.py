@@ -7,6 +7,7 @@ sys.path.append(os.path.abspath('.'))
 import pip
 
 from walkoff.helpers import list_apps
+import walkoff.config.paths as paths
 
 
 def cmd_line():
@@ -17,8 +18,7 @@ def cmd_line():
     return args
 
 
-if __name__ == '__main__':
-
+def install_dependencies():
     args = cmd_line()
     apps = args.apps
 
@@ -27,8 +27,13 @@ if __name__ == '__main__':
 
     for app in apps:
         print("Installing dependencies for " + app + " App...")
-        path = os.path.abspath('apps/' + app + '/requirements.txt')
+        path = os.path.abspath(paths.installed_apps_path + "/" + app + '/requirements.txt')
+        print(path)
         if os.path.isfile(path) is False:
             print("No requirements.txt file found in " + app + " folder. Skipping...")
             continue
         pip.main(['install', '-r', path])
+
+
+if __name__ == '__main__':
+    install_dependencies()

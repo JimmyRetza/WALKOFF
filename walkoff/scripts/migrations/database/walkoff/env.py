@@ -6,7 +6,7 @@ import sys
 sys.path.append(os.getcwd())
 
 
-from scripts.migrations.database.commonenv import run
+from walkoff.scripts.migrations.database.commonenv import run
 from walkoff.server.extensions import db
 
 
