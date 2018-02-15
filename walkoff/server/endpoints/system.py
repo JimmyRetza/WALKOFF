@@ -5,7 +5,6 @@ from walkoff.server.returncodes import *
 from walkoff.security import permissions_accepted_for_resources, ResourcePermissions
 
 
-
 metric_symbols = ('K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y')
 bytes_prefix = {}
 for i, symbol in enumerate(metric_symbols):

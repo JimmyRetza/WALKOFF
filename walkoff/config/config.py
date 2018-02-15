@@ -4,6 +4,7 @@ import logging
 import sys
 from os import listdir
 from os.path import isfile, join, splitext
+from os import path
 
 import yaml
 
@@ -83,7 +84,7 @@ def load_app_apis(apps_path=None):
     from walkoff.helpers import list_apps, format_exception_message
     global app_apis
     if apps_path is None:
-        apps_path = walkoff.config.paths.apps_path
+        apps_path = walkoff.config.paths.installed_apps_path
     try:
         with open(join(walkoff.config.paths.walkoff_schema_path), 'r') as schema_file:
             json.loads(schema_file.read())
@@ -107,5 +108,9 @@ def load_app_apis(apps_path=None):
 def initialize():
     load_config()
     from walkoff.appgateway import cache_apps
-    cache_apps(walkoff.config.paths.apps_path)
+    sys.path.insert(0, path.abspath(walkoff.config.paths.walkoff_external))
+    print("calling installed apps path")
+    cache_apps(walkoff.config.paths.installed_apps_path, relative=False)
+    print("calling appbase")
+    cache_apps(walkoff.config.paths.base_apps_path)
     load_app_apis()

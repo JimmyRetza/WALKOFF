@@ -6,9 +6,9 @@ import subprocess
 import shutil
 import time
 import argparse
-import setup_walkoff
-import scripts.migrate_api
-import scripts.migrate_workflows
+from walkoff.setup_walkoff import main as setup_main
+from walkoff.scripts import migrate_api
+from walkoff.scripts import migrate_workflows
 import semver
 from walkoff import __version__ as version
 from six.moves import input
@@ -75,7 +75,7 @@ def setup(flagged, inter):
     if not (flagged or (inter and prompt("Do you want to setup WALKOFF now?"))):
         return
 
-    setup_walkoff.main()
+    setup_main()
 
 
 def migrate_apps(flagged, inter):
@@ -83,7 +83,7 @@ def migrate_apps(flagged, inter):
     if not (flagged or (inter and prompt("Do you want to migrate your app APIs?"))):
         return
 
-    scripts.migrate_api.main()
+    migrate_api.main()
 
 
 def validate_version(target):
@@ -108,7 +108,7 @@ def validate_version(target):
     return mode, tgt_version
 
 
-def migrate_workflows(flagged, inter, target):
+def migrate_wf(flagged, inter, target):
 
     if not (flagged or (inter and prompt("Do you want to migrate your workflows?"))):
         return
@@ -120,7 +120,7 @@ def migrate_workflows(flagged, inter, target):
         mode, tgt_version = validate_version(target)
 
     print("{} workflows to version {}".format(mode, tgt_version))
-    scripts.migrate_workflows.convert_playbooks(mode, tgt_version)
+    migrate_workflows.convert_playbooks(mode, tgt_version)
 
 
 def alembic(flagged, inter):
@@ -208,7 +208,7 @@ def main():
     clean_pycache(args.everything or args.clean, args.interactive)
     setup(args.everything or args.setup, args.interactive)
     migrate_apps(args.everything or args.migrateapps, args.interactive)
-    migrate_workflows(args.everything or args.migrateworkflows, args.interactive, args.migrateworkflows)
+    migrate_wf(args.everything or args.migrateworkflows, args.interactive, args.migrateworkflows)
     alembic(args.everything or args.migratedatabase, args.interactive)
 
 
