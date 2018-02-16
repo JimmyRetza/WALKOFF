@@ -3,6 +3,8 @@ import sys
 import os
 from six.moves import configparser
 from six.moves import input
+import tarfile
+import zipfile
 
 walkoff_ext = ""
 walkoff_internal = os.path.abspath(__file__).rsplit(os.path.sep, 1)[0]
@@ -32,6 +34,17 @@ def set_config_path():
     with open(ext_json, "w") as f:
         json.dump(o, f, sort_keys=True)
 
+    arch_path = os.path.join(walkoff_internal, "walkoff_external")
+
+    if os.name == 'posix':
+        arch_path += ".tar.gz"
+        archf = tarfile.open(arch_path)
+
+    elif os.name == 'nt':
+        arch_path += ".zip"
+        archf = zipfile.ZipFile(arch_path)
+
+    archf.extractall(walkoff_ext)
 
 def set_alembic_paths():
 

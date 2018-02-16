@@ -20,7 +20,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='walkoff',  # Required
-    version='0.6.7a2',  # Required
+    version='0.6.7a3',  # Required
     description=('A flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down.'),  # Required
 
     url='https://iadgov.github.io/WALKOFF/',  # Optional
@@ -146,7 +146,7 @@ setup(
     entry_points={  # Optional
         'console_scripts': [
             'walkoff-setup=walkoff.setup_walkoff:main',
-            'walkoff-run=walkoff:main',
+            'walkoff-run=walkoff:__main__',
             'walkoff-update=walkoff.update_walkoff:main'
         ],
     },
