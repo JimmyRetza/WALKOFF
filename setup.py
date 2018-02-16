@@ -20,7 +20,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='walkoff',  # Required
-    version='0.6.4',  # Required
+    version='0.6.7a2',  # Required
     description=('A flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down.'),  # Required
 
     url='https://iadgov.github.io/WALKOFF/',  # Optional
@@ -73,7 +73,7 @@ setup(
     #
     #   py_modules=["my_module"],
     #
-    packages=find_packages(exclude=['docs', 'tests']),  # Required
+    packages=find_packages(exclude=['docs', 'tests', 'tests.*', 'walkoff_external']),  # Required
 
     # This field lists other packages that your project depends on to run.
     # Any package you put here will be installed by pip when your project is
@@ -120,10 +120,13 @@ setup(
     # If using Python 2.6 or earlier, then these have to be included in
     # MANIFEST.in as well.
     package_data={  # Optional
-        'client/dist': ['walkoff/client/dist/main.bundle.js',
-                        'walkoff/client/dist/polyfills.bundle.js',
-                        'walkoff/client/dist/vendor.bundle.js'],
-        'ext': ['walkoff_external.tar.gz']
+        'walkoff': ['config/external_paths.json',
+                    'client/dist/main.bundle.js',
+                    'client/dist/polyfills.bundle.js',
+                    'client/dist/vendor.bundle.js',
+                    'scripts/migrations/alembic.ini',
+                    'walkoff_external.tar.gz',
+                    'test.txt'],
     },
 
     # Although 'package_data' is the preferred approach, in some case you may
