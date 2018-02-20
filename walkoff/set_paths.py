@@ -16,7 +16,7 @@ def set_config_path():
     ext_json = os.path.join(walkoff_internal, 'config', 'external_paths.json')
     with open(ext_json, "r") as f:
         o = json.load(f)
-        sys.stdout.write("* Enter a path for walkoff_external")
+        sys.stdout.write("* Enter a path for walkoff_external: ")
         user_input = input()
         walkoff_ext = user_input
 
@@ -36,13 +36,13 @@ def set_config_path():
 
     arch_path = os.path.join(walkoff_internal, "walkoff_external")
 
-    if os.name == 'posix':
-        arch_path += ".tar.gz"
-        archf = tarfile.open(arch_path)
+    # if os.name == 'posix':
+    arch_path += ".tar.gz"
+    archf = tarfile.open(arch_path)
 
-    elif os.name == 'nt':
-        arch_path += ".zip"
-        archf = zipfile.ZipFile(arch_path)
+    # elif os.name == 'nt':
+    #     arch_path += ".zip"
+    #     archf = zipfile.ZipFile(arch_path)
 
     archf.extractall(walkoff_ext)
 

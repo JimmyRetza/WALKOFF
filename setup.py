@@ -8,6 +8,7 @@ https://github.com/pypa/sampleproject
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
+from walkoff import __version__ as version
 
 here = path.abspath(path.dirname(__file__))
 
@@ -20,7 +21,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='walkoff',  # Required
-    version='0.6.7a6',  # Required
+    version=version,  # Required
     description=('A flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down.'),  # Required
 
     url='https://iadgov.github.io/WALKOFF/',  # Optional

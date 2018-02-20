@@ -72,7 +72,7 @@ def create_app():
     import walkoff.config.config
     connexion_app = connexion.App(__name__, specification_dir='../api/')
     _app = connexion_app.app
-    _app.jinja_loader = FileSystemLoader(['walkoff/templates'])
+    _app.jinja_loader = FileSystemLoader([paths.templates_path])
     _app.config.update(
         # CHANGE SECRET KEY AND SECURITY PASSWORD SALT!!!
         SECRET_KEY=walkoff.config.config.secret_key,

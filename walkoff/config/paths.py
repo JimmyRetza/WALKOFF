@@ -24,6 +24,7 @@ base_interfaces_path = join(walkoff_internal, 'interfacebase')
 api_path = join(walkoff_internal, 'api')
 case_db_path = join(data_path, 'events.db')
 
+templates_path = join(walkoff_internal, 'templates')
 client_path = join(walkoff_internal, 'client')
 config_path = join(data_path, 'config')
 db_path = join(data_path, 'db')
