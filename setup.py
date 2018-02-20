@@ -20,7 +20,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='walkoff',  # Required
-    version='0.6.7a3',  # Required
+    version='0.6.7a6',  # Required
     description=('A flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down.'),  # Required
 
     url='https://iadgov.github.io/WALKOFF/',  # Optional
@@ -120,11 +120,17 @@ setup(
     # If using Python 2.6 or earlier, then these have to be included in
     # MANIFEST.in as well.
     package_data={  # Optional
-        'walkoff': ['config/external_paths.json',
+        'walkoff': ['api/*.yaml',
+                    'api/objects/*.yaml',
+                    'config/external_paths.json',
                     'client/dist/main.bundle.js',
                     'client/dist/polyfills.bundle.js',
                     'client/dist/vendor.bundle.js',
+                    'proto/data.proto',
                     'scripts/migrations/alembic.ini',
+                    'scripts/migrations/database/*/README',
+                    'scripts/migrations/database/*/*.mako',
+                    'templates/*',
                     'walkoff_external.tar.gz',
                     'test.txt'],
     },
